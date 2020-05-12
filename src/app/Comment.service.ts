@@ -18,6 +18,12 @@ export class CommentService {
     text: 'This is a description of the item, it might describe a bug/task/comment, it can also display <a href="​www.google.com" ​ >Links</a>',
     tags: ['bug', 'issue', 'etc'],
     edit: false,
+  },{
+    id: '12',
+    title: 'This is an item for editing',
+    text: 'This is a description of the item, it might describe a bug/task/comment, it can also display <a href="​www.google.com" ​ >Links</a>',
+    tags: ['bug', 'issue', 'etc'],
+    edit: true,
   }];
   
   getItems() {

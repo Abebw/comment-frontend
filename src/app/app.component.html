@@ -1,11 +1,9 @@
 
 
-<span>Welcome to {{title}} rebuild working</span>
-edit comment below
+<span>Welcome to {{title}}</span>
 <div *ngFor="let comment of comments">
-  <app-read-comment [comment]="comment"></app-read-comment>  
+  <app-read-comment *ngIf="!comment.edit" [comment]="comment"></app-read-comment> 
+  <app-edit-comment *ngIf="comment.edit" [comment]="comment"></app-edit-comment>  
 </div>
 
-<app-edit-comment></app-edit-comment>
-after
 <router-outlet></router-outlet>
