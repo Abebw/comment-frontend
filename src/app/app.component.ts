@@ -8,8 +8,8 @@ import { CommentService } from './Comment.service';
 })
 export class AppComponent {
   title = 'comment-frontend';
-  
+  comments = [];
   constructor(private commentService: CommentService) {
-    console.log(commentService.getItems());
+    this.comments = commentService.getItems();
   }
 }

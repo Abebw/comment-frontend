@@ -1,7 +1,10 @@
 
 
 <span>Welcome to {{title}} rebuild working</span>
-
-
-
+edit comment below
+<div ng-repeat="(index, comment) in comments">
+  <app-read-comment></app-read-comment>  
+</div>
+<app-edit-comment></app-edit-comment>
+after
 <router-outlet></router-outlet>
