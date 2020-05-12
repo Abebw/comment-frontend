@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommentService } from './Comment.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'comment-frontend';
+  
+  constructor(private commentService: CommentService) {
+    console.log(commentService.getItems());
+  }
 }
