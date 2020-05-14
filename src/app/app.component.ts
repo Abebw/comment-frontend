@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommentService } from './Comment.service';
+import { CommentService } from './comment.service';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +11,8 @@ export class AppComponent {
   comments = [];
   constructor(private commentService: CommentService) {
     this.comments = commentService.getItems();
+  }
+  startEdit(){
+    console.log('catching start edit');
   }
 }

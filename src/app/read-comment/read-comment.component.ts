@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-read-comment',
   templateUrl: './read-comment.component.html',
@@ -7,7 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ReadCommentComponent implements OnInit {
   @Input() comment;
+  @Output() startEdit: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
+  editClickListener(){
+    console.log('emitting comment');
+    this.startEdit.emit(null);
+  }
 
   ngOnInit(): void {
   }

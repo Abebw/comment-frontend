@@ -2,7 +2,7 @@
 
 <span>Welcome to {{title}}</span>
 <div *ngFor="let comment of comments">
-  <app-read-comment *ngIf="!comment.edit" [comment]="comment"></app-read-comment> 
+  <app-read-comment *ngIf="!comment.edit" [comment]="comment" (startEdit)="startEdit()"></app-read-comment> 
   <app-edit-comment *ngIf="comment.edit" [comment]="comment"></app-edit-comment>  
 </div>
 

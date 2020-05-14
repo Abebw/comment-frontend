@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, ChangeDetectorRef, Output } from '@angular/core';
 
 @Component({
   selector: 'app-edit-comment',
@@ -7,8 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EditCommentComponent implements OnInit {
   @Input() comment;
+  @Output() open: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
