@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ɵConsole } from '@angular/core';
 import { CommentService } from './comment.service';
 
 export interface Comment {
@@ -47,5 +47,22 @@ export class AppComponent {
       return;
     };
     comment.edit = false;
+  }
+  saveEdit(comment) {
+    console.log('app component saveEdit running');
+    console.log(comment);
+    if (comment.edit === false) {
+      return;
+    };
+    this.comments.set(comment.id,   {
+      id: comment.id,
+      title: comment.title,
+      text: comment.text,
+      tags: comment.tags,
+      edit: false
+    });
+    console.log(this.comments);
+
+    console.error('abetest THIS SHOULD SYNC WITH SERVICE');
   }
 }

@@ -16,6 +16,7 @@ export class EditCommentComponent implements OnInit {
   @Input() comment;
   @Input() allTags: string[];
   @Output() cancelEdit: EventEmitter<any> = new EventEmitter();
+  @Output() saveEdit: EventEmitter<any> = new EventEmitter();
   tempComment;
 
   //from fruit example 
@@ -42,6 +43,9 @@ export class EditCommentComponent implements OnInit {
 
   cancelClickListener() {
     this.cancelEdit.emit(this.comment);
+  }
+  saveClickListener() {
+    this.saveEdit.emit(this.tempComment);
   }
 
   add(event: MatChipInputEvent): void {
