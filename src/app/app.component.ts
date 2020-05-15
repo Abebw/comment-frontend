@@ -42,7 +42,7 @@ export class AppComponent {
     };
     comment.edit = true;
   }
-  stopEdit(comment){
+  cancelEdit(comment){
     if (comment.edit === false) {
       return;
     };

@@ -3,7 +3,7 @@
 <span>Welcome to {{title}}</span>
 <div *ngFor="let comment of comments | keyvalue">
   <app-read-comment *ngIf="!comment.value.edit" [comment]="comment.value" (startEdit)="startEdit(comment.value)"></app-read-comment> 
-  <app-edit-comment *ngIf="comment.value.edit" [comment]="comment.value" (stopEdit)="stopEdit(comment.value)"></app-edit-comment>  
+  <app-edit-comment *ngIf="comment.value.edit" [comment]="comment.value" (cancelEdit)="cancelEdit(comment.value)"></app-edit-comment>  
 </div>
 
 <router-outlet></router-outlet>

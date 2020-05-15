@@ -7,16 +7,18 @@ import { Component, OnInit, Input, EventEmitter, ChangeDetectorRef, Output } fro
 })
 export class EditCommentComponent implements OnInit {
   @Input() comment;
-  @Output() stopEdit: EventEmitter<any> = new EventEmitter();
+  @Output() cancelEdit: EventEmitter<any> = new EventEmitter();
+  tempData;
 
 
   constructor() {
   }
 
   ngOnInit(): void {
+    this.tempData = JSON.parse(JSON.stringify(this.comment));
   }
 
   cancelClickListener() {
-    this.stopEdit.emit(this.comment);
+    this.cancelEdit.emit(this.comment);
   }
 }

@@ -1,5 +1,12 @@
 <p>edit title:{{comment.title}}</p>
-<div>text: {{comment.text}}</div>
-<div>tags: {{comment.tags}}</div>
-  <button (click)="cancelClickListener()">cancel</button>
+<div>
+  <input [(ngModel)]="tempData.title" placeholder="title"/>
+</div>
+<div>
+  <textarea [(ngModel)]="tempData.text" placeholder="text"></textarea>
+</div>
+<div>
+  <input [(ngModel)]="tempData.tags" placeholder="text"/>
+</div>
+ <button (click)="cancelClickListener()">cancel</button>
   <!-- <button (click)="cancelClickListener">save</button> -->
