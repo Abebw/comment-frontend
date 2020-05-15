@@ -54,15 +54,13 @@ export class AppComponent {
     if (comment.edit === false) {
       return;
     };
-    this.comments.set(comment.id,   {
+    this.comments.set(comment.id,{
       id: comment.id,
       title: comment.title,
       text: comment.text,
       tags: comment.tags,
       edit: false
     });
-    console.log(this.comments);
-
-    console.error('abetest THIS SHOULD SYNC WITH SERVICE');
+    this.commentService.saveItems(this.comments).subscribe(data => this.updateCommentsFromServer());
   }
 }

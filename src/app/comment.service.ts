@@ -15,6 +15,20 @@ export interface dbComment {
   providedIn: 'root'
 })
 export class CommentService {
+  
+  saveItems(comments):Observable<any> {
+    console.log('service save items executing');
+    for( let comment of comments) {
+      this.items.set(comment[0], {
+        id: comment[1].id,
+        title: comment[1].title,
+        text: comment[1].text,
+        tags: comment[1].tags
+      })
+    }
+    return this.getItems();
+  }
+
   items:Map<string, dbComment> = null;
 
   getItems(): Observable<any> {
@@ -28,8 +42,9 @@ export class CommentService {
         return this.items;
       }));
     }
-    return of(Array.from(this.items).map((kvPair) => kvPair[1]));
+    return of(this.items);
   }
+
   addNewComment(comment){
     console.error('addNewComment unimplemented');
   }
