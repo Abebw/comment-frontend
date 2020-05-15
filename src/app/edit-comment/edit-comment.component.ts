@@ -7,7 +7,7 @@ import { Component, OnInit, Input, EventEmitter, ChangeDetectorRef, Output } fro
 })
 export class EditCommentComponent implements OnInit {
   @Input() comment;
-  @Output() open: EventEmitter<any> = new EventEmitter();
+  @Output() stopEdit: EventEmitter<any> = new EventEmitter();
 
 
   constructor() {
@@ -16,4 +16,7 @@ export class EditCommentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cancelClickListener() {
+    this.stopEdit.emit(this.comment);
+  }
 }

@@ -42,4 +42,10 @@ export class AppComponent {
     };
     comment.edit = true;
   }
+  stopEdit(comment){
+    if (comment.edit === false) {
+      return;
+    };
+    comment.edit = false;
+  }
 }
