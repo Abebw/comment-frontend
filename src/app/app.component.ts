@@ -18,6 +18,7 @@ export interface Comment {
 export class AppComponent {
   title = 'comment-frontend';
   comments:Map<string, Comment>;
+  tempComment:Comment;
   
   private commentService: CommentService;
   constructor(private cs: CommentService) {
@@ -25,10 +26,12 @@ export class AppComponent {
   }
   ngOnInit(){
     this.updateCommentsFromServer();
+    this.initializeTempComment();
   }
+
   updateCommentsFromServer(){
-    this.commentService.getItems().subscribe(data => {
-      console.log('AppComments.updateComments subscribe running');
+    this.commentService.getItems().subscribe((data) => {
+      console.log('updateCommentsFromServer resolving');
       console.log(data);
       for( let record of data) {
         record[1].edit = false;
@@ -48,12 +51,22 @@ export class AppComponent {
     };
     comment.edit = false;
   }
+  initializeTempComment(){
+    this.tempComment = {
+      id:'dummyID',
+      title:'',
+      text:'',
+      tags:[],
+      edit:true
+    };
+  }
   saveEdit(comment) {
     console.log('app component saveEdit running');
     console.log(comment);
     if (comment.edit === false) {
       return;
     };
+
     this.comments.set(comment.id,{
       id: comment.id,
       title: comment.title,
@@ -61,6 +74,10 @@ export class AppComponent {
       tags: comment.tags,
       edit: false
     });
-    this.commentService.saveItems(this.comments).subscribe(data => this.updateCommentsFromServer());
+    if (isNaN(comment.id)) {
+      //TODO put a comment explaining this
+      this.initializeTempComment();
+    }
+    this.commentService.saveItems(this.comments).subscribe((data) => this.updateCommentsFromServer());
   }
 }

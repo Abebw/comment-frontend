@@ -15,6 +15,7 @@ import { startWith, map } from 'rxjs/operators';
 export class EditCommentComponent implements OnInit {
   @Input() comment;
   @Input() allTags: string[];
+  @Input() hideCancel: boolean = false;
   @Output() cancelEdit: EventEmitter<any> = new EventEmitter();
   @Output() saveEdit: EventEmitter<any> = new EventEmitter();
   tempComment;
@@ -32,9 +33,12 @@ export class EditCommentComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor() {
+    if (this.allTags==null){
+      this.allTags=[];
+    }
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
-      map((fruit: string | null) => fruit ? this._filter(fruit) : this.allTags.slice()));
+      map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
   }
 
   ngOnInit(): void {

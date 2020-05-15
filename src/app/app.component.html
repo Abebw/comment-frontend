@@ -5,5 +5,6 @@
   <app-read-comment *ngIf="!comment.value.edit" [comment]="comment.value" (startEdit)="startEdit(comment.value)"></app-read-comment> 
   <app-edit-comment *ngIf="comment.value.edit" [comment]="comment.value" (cancelEdit)="cancelEdit(comment.value)" (saveEdit)="saveEdit($event)"></app-edit-comment>  
 </div>
+<app-edit-comment [comment]="tempComment" hideCancel="true" (saveEdit)="saveEdit($event)"></app-edit-comment>  
 
 <router-outlet></router-outlet>
