@@ -9,9 +9,8 @@ export class ReadCommentComponent implements OnInit {
   @Output() startEdit: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
-  editClickListener(){
-    console.log('emitting comment');
-    this.startEdit.emit(null);
+  editClickListener() {
+    this.startEdit.emit(this.comment);
   }
 
   ngOnInit(): void {

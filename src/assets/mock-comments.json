@@ -2,12 +2,10 @@
   "id": "1",
   "title": "This is a json item from",
   "text": "This is a description of the item, it might describe a bug/task/comment, it can also display <a href=\"​www.google.com\" ​>Links</a>",
-  "tags": ["bug", "issue", "etc"],
-  "edit": false
+  "tags": ["bug", "issue", "etc"]
 }],[ "2" , {
   "id": "12",
   "title": "This is a json item for editing",
   "text": "This is a description of the item, it might describe a bug/task/comment, it can also display <a href=\"​www.google.com\" ​>Links</a>",
-  "tags": ["bug", "issue", "etc"],
-  "edit": true
+  "tags": ["bug", "issue", "etc"]
 }]]
