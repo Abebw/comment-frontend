@@ -1,4 +1,4 @@
 <p>title:{{comment.title}}</p>
-<div>text: {{comment.text}}</div>
+<div>text: <span [innerHTML]=comment.text></span></div>
 <div>tags: {{comment.tags}}</div>
   <button (click)="editClickListener()">edit</button>

@@ -56,12 +56,6 @@ export class CommentService {
   addNewComment(comment){
     console.error('addNewComment unimplemented');
   }
-  updateComment(comment): Observable<any>{
-    this.items.set(comment.id, comment);
-    throw new Error('umimplemented')
-    return;
-  }
-
 
   constructor(private http: HttpClient) {
 

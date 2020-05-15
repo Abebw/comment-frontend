@@ -31,8 +31,6 @@ export class AppComponent {
 
   updateCommentsFromServer(){
     this.commentService.getItems().subscribe((data) => {
-      console.log('updateCommentsFromServer resolving');
-      console.log(data);
       for( let record of data) {
         record[1].edit = false;
       }

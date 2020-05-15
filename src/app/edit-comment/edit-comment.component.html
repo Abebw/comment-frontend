@@ -33,6 +33,6 @@
   </mat-form-field>
   
 </div>
-  <button (click)="cancelClickListener()">cancel</button>
+  <button *ngIf="!hideCancel" (click)="cancelClickListener()">cancel</button>
   <button (click)="saveClickListener()">save</button>
-  <button (click)="deleteClickListener()">delete</button>
+  <button *ngIf="!hideCancel" (click)="deleteClickListener()">delete</button>
