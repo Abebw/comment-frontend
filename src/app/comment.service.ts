@@ -16,6 +16,7 @@ export interface dbComment {
 })
 export class CommentService {
   saveItems(comments):Observable<any> {
+    this.items = new Map();
     console.log('service save items executing');
     for( let comment of comments) {
       if (isNaN(comment[0])){

@@ -18,6 +18,7 @@ export class EditCommentComponent implements OnInit {
   @Input() hideCancel: boolean = false;
   @Output() cancelEdit: EventEmitter<any> = new EventEmitter();
   @Output() saveEdit: EventEmitter<any> = new EventEmitter();
+  @Output() deleteComment: EventEmitter<any> = new EventEmitter();
   tempComment;
 
   //from fruit example 
@@ -46,10 +47,15 @@ export class EditCommentComponent implements OnInit {
   }
 
   cancelClickListener() {
-    this.cancelEdit.emit(this.comment);
+    this.cancelEdit.emit();
+    // this.cancelEdit.emit(this.comment);
   }
   saveClickListener() {
     this.saveEdit.emit(this.tempComment);
+  }
+  deleteClickListener() {
+    console.log('deleteClickListener running');
+    this.deleteComment.emit();
   }
 
   add(event: MatChipInputEvent): void {

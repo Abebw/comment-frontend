@@ -80,4 +80,9 @@ export class AppComponent {
     }
     this.commentService.saveItems(this.comments).subscribe((data) => this.updateCommentsFromServer());
   }
+  deleteComment(comment) {
+    console.log('app component delete comment running');
+    this.comments.delete(comment.id);
+    this.commentService.saveItems(this.comments).subscribe((data) => this.updateCommentsFromServer());
+  }
 }
