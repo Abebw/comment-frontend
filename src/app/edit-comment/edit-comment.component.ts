@@ -16,29 +16,28 @@ export class EditCommentComponent implements OnInit {
   @Input() comment;
   @Input() allTags: string[];
   @Output() cancelEdit: EventEmitter<any> = new EventEmitter();
-  tempData;
+  tempComment;
 
   //from fruit example 
-  visible = true;
+  // visible = true;
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl();
-  filteredFruits: Observable<string[]>;
+  tagCtrl = new FormControl();
+  filteredTags: Observable<string[]>;
 
-  fruits: string[] = ['Lemon'];
 
-  @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
+  @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor() {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
+    this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((fruit: string | null) => fruit ? this._filter(fruit) : this.allTags.slice()));
   }
 
   ngOnInit(): void {
-    this.tempData = JSON.parse(JSON.stringify(this.comment));
+    this.tempComment = JSON.parse(JSON.stringify(this.comment));
   }
 
   cancelClickListener() {
@@ -49,9 +48,9 @@ export class EditCommentComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
+    // Add our tag
     if ((value || '').trim()) {
-      this.fruits.push(value.trim());
+      this.tempComment.tags.push(value.trim());
     }
 
     // Reset the input value
@@ -59,26 +58,26 @@ export class EditCommentComponent implements OnInit {
       input.value = '';
     }
 
-    this.fruitCtrl.setValue(null);
+    this.tagCtrl.setValue(null);
   }
 
-  remove(fruit: string): void {
-    const index = this.fruits.indexOf(fruit);
+  remove(tag: string): void {
+    const index = this.tempComment.tags.indexOf(tag);
 
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.tempComment.tags.splice(index, 1);
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.fruits.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
+    this.tempComment.tags.push(event.option.viewValue);
+    this.tagInput.nativeElement.value = '';
+    this.tagCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allTags.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+    return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
   }
 }
