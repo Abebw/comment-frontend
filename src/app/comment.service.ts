@@ -16,7 +16,7 @@ export interface Comment {
   providedIn: 'root'
 })
 export class CommentService {
-  items = null;
+  items:Map<string, Comment> = null;
 
   getItems(): Observable<any> {
     if (this.items === null) {
