@@ -9,8 +9,12 @@ import { CommentService } from './comment.service';
 export class AppComponent {
   title = 'comment-frontend';
   comments = [];
-  constructor(private commentService: CommentService) {
-    this.comments = commentService.getItems();
+  private commentService: CommentService;
+  constructor(private cs: CommentService) {
+    this.commentService = cs;
+  }
+  ngOnInit(){
+    this.commentService.getItems().subscribe(data => this.comments = data);;
   }
   startEdit(){
     console.log('catching start edit');
