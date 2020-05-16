@@ -1,10 +1,10 @@
 
-<span>Welcome to {{title}}</span>
+<h1 class="title" >Welcome to {{title}}</h1>
 <select (change)="updateFilteredComments()" [(ngModel)]="tagSearch">
   <option value="">select from availible tags to search</option>
   <option *ngFor="let tag of allTags" [ngValue]="tag">{{tag}}</option>
 </select>
-<div *ngFor="let comment of filteredComments">
+<div class="commentList" *ngFor="let comment of filteredComments">
   <app-read-comment *ngIf="!comment.edit" [comment]="comment" (startEdit)="startEdit(comment)"></app-read-comment> 
   <app-edit-comment
     *ngIf="comment.edit"
@@ -16,7 +16,7 @@
   </app-edit-comment>  
   <mat-divider></mat-divider>
 </div>
-
-<app-edit-comment [comment]="tempComment" hideCancel="true" (saveEdit)="saveEdit($event)"></app-edit-comment>  
-
+<div class="commentList">
+  <app-edit-comment [comment]="tempComment" hideCancel="true" (saveEdit)="saveEdit($event)"></app-edit-comment>  
+</div>
 <router-outlet></router-outlet>
