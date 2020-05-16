@@ -1,14 +1,15 @@
 
 <span>Welcome to {{title}}</span>
-<div *ngFor="let comment of comments | keyvalue">
-  <app-read-comment *ngIf="!comment.value.edit" [comment]="comment.value" (startEdit)="startEdit(comment.value)"></app-read-comment> 
+<input type="text" (keyup)="updateFilteredComments()" [(ngModel)]="tagSearch" />
+<div *ngFor="let comment of filteredComments">
+  <app-read-comment *ngIf="!comment.edit" [comment]="comment" (startEdit)="startEdit(comment)"></app-read-comment> 
   <app-edit-comment
-    *ngIf="comment.value.edit"
-    [comment]="comment.value"
+    *ngIf="comment.edit"
+    [comment]="comment"
     [allTags]="allTags"
-    (cancelEdit)="cancelEdit(comment.value)"
+    (cancelEdit)="cancelEdit(comment)"
     (saveEdit)="saveEdit($event)"
-    (deleteComment)="deleteComment(comment.value)">
+    (deleteComment)="deleteComment(comment)">
   </app-edit-comment>  
   <mat-divider></mat-divider>
 </div>
