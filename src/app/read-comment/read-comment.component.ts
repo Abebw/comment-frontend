@@ -9,6 +9,7 @@ export class ReadCommentComponent implements OnInit {
   @Output() startEdit: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
+  
   editClickListener() {
     this.startEdit.emit(this.comment);
   }

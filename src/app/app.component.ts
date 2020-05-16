@@ -92,13 +92,13 @@ export class AppComponent {
       edit: false
     });
     if (isNaN(comment.id)) {
-      //TODO put a comment explaining this
+      // if we are saving a comment who's id isn't a number it didn't come from the database so it's the tempID.
+      // when it comes back from the database we will need a new temp comment to add 
       this.initializeTempComment();
     }
     this.commentService.saveItems(this.comments).subscribe((data) => this.updateCommentsFromServer());
   }
   deleteComment(comment) {
-    console.log('app component delete comment running');
     this.comments.delete(comment.id);
     this.commentService.saveItems(this.comments).subscribe((data) => this.updateCommentsFromServer());
   }

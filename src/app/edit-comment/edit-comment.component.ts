@@ -13,6 +13,7 @@ import { startWith, map } from 'rxjs/operators';
 
 
 export class EditCommentComponent implements OnInit {
+  //////// Fields
   @Input() comment;
   @Input() allTags: string[];
   @Input() hideCancel: boolean = false;
@@ -20,9 +21,6 @@ export class EditCommentComponent implements OnInit {
   @Output() saveEdit: EventEmitter<any> = new EventEmitter();
   @Output() deleteComment: EventEmitter<any> = new EventEmitter();
   tempComment;
-
-  //from fruit example 
-  // visible = true;
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -33,6 +31,7 @@ export class EditCommentComponent implements OnInit {
   @ViewChild('tagInput') tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
+  //////// Constructors and initialization
   constructor() {
     if (this.allTags == null){
       this.allTags=[];
@@ -47,9 +46,9 @@ export class EditCommentComponent implements OnInit {
     this.tagCtrl.setValue(null);
   }
 
+  //////// event listeners
   cancelClickListener() {
     this.cancelEdit.emit();
-    // this.cancelEdit.emit(this.comment);
   }
   saveClickListener() {
     this.saveEdit.emit(this.tempComment);
@@ -58,7 +57,7 @@ export class EditCommentComponent implements OnInit {
     console.log('deleteClickListener running');
     this.deleteComment.emit();
   }
-
+  //////// Tag code
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;

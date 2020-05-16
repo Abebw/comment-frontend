@@ -40,13 +40,13 @@ export class CommentService {
   maxId:number;
 
   getItems(): Observable<any> {
-    console.log('service.getItems running');
     if (this.items === null) {
-      console.log('http.get observable initiating');
-      return this.http.get<any>('./assets/mock-comments.json').pipe(map((response) => {
-        this.items = new Map<string, dbComment>(response);
+      return this.http.get<any>('./assets/mock-comments.json').pipe(map((response: dbComment[]) => {
+        this.items = new Map<string, dbComment>();
+        for (let item of response){
+          this.items.set(item.id, item);
+        }
         this.maxId = this.items.size;
-        console.log('service.getItems returning');
         return new Map(this.items);
       }));
     }
