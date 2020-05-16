@@ -44,6 +44,7 @@ export class EditCommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.tempComment = JSON.parse(JSON.stringify(this.comment));
+    this.tagCtrl.setValue(null);
   }
 
   cancelClickListener() {
