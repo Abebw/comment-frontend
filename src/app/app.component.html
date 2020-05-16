@@ -1,5 +1,4 @@
 
-
 <span>Welcome to {{title}}</span>
 <div *ngFor="let comment of comments | keyvalue">
   <app-read-comment *ngIf="!comment.value.edit" [comment]="comment.value" (startEdit)="startEdit(comment.value)"></app-read-comment> 
@@ -11,7 +10,9 @@
     (saveEdit)="saveEdit($event)"
     (deleteComment)="deleteComment(comment.value)">
   </app-edit-comment>  
+  <mat-divider></mat-divider>
 </div>
+
 <app-edit-comment [comment]="tempComment" hideCancel="true" (saveEdit)="saveEdit($event)"></app-edit-comment>  
 
 <router-outlet></router-outlet>

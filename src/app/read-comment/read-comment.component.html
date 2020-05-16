@@ -1,4 +1,12 @@
-<p>title:{{comment.title}}</p>
-<div>text: <span [innerHTML]=comment.text></span></div>
-<div>tags: {{comment.tags}}</div>
-  <button (click)="editClickListener()">edit</button>
+<mat-card  class="read-comment-card">
+  <mat-card-header>
+    <mat-card-title>{{comment.title}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div>text: <span [innerHTML]=comment.text></span></div>
+    <div>tags: {{comment.tags}}</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="editClickListener()">edit</button>
+  </mat-card-actions>
+</mat-card>
