@@ -3,8 +3,8 @@
     <mat-card-title>{{comment.title}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div>text: <span [innerHTML]=comment.text></span></div>
-    <div>tags: {{comment.tags}}</div>
+    <div><span [innerHTML]=comment.text></span></div>
+    <div>Tags: {{comment.tags}}</div>
   </mat-card-content>
   <mat-card-actions>
     <button (click)="editClickListener()">edit</button>

@@ -1,9 +1,11 @@
 
 <h1 class="title" >Welcome to {{title}}</h1>
-<select (change)="updateFilteredComments()" [(ngModel)]="tagSearch">
-  <option value="">select from availible tags to search</option>
-  <option *ngFor="let tag of allTags" [ngValue]="tag">{{tag}}</option>
-</select>
+<div class="searchBar">
+  <select (change)="updateFilteredComments()" [(ngModel)]="tagSearch">
+    <option value="">select from availible tags to search</option>
+    <option *ngFor="let tag of allTags" [ngValue]="tag">{{tag}}</option>
+  </select>
+</div>
 <div class="commentList" *ngFor="let comment of filteredComments">
   <app-read-comment *ngIf="!comment.edit" [comment]="comment" (startEdit)="startEdit(comment)"></app-read-comment> 
   <app-edit-comment
