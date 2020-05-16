@@ -34,7 +34,7 @@ export class EditCommentComponent implements OnInit {
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor() {
-    if (this.allTags==null){
+    if (this.allTags == null){
       this.allTags=[];
     }
     this.filteredTags = this.tagCtrl.valueChanges.pipe(

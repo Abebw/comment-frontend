@@ -1,38 +1,47 @@
-<p>edit title:{{comment.title}}</p>
-<div>
-  <input [(ngModel)]="tempComment.title" placeholder="title"/>
-</div>
-<div>
-  <textarea [(ngModel)]="tempComment.text" placeholder="text"></textarea>
-</div>
-<div>
+<mat-card  class="edit-comment-card">
 
-  <mat-form-field class="example-chip-list">
-    <mat-chip-list #chipList aria-label="Tag selection">
-      <mat-chip
-        *ngFor="let tag of tempComment.tags"
-        [selectable]="selectable"
-        [removable]="removable"
-        (removed)="remove(tag)">
-        {{tag}}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
-      <input
-        #tagInput
-        [matAutocomplete]="auto"
-        [formControl]="tagCtrl"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)">
-    </mat-chip-list>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-      <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
-        {{tag}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-  
-</div>
-  <button *ngIf="!hideCancel" (click)="cancelClickListener()">cancel</button>
-  <button (click)="saveClickListener()">save</button>
-  <button *ngIf="!hideCancel" (click)="deleteClickListener()">delete</button>
+  <mat-card-header>
+    <mat-card-title>
+      Edit Comment
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <input [(ngModel)]="tempComment.title" placeholder="title"/>
+    </div>
+    <div>
+      <textarea [(ngModel)]="tempComment.text" placeholder="text"></textarea>
+    </div>
+    <div>
+      <mat-form-field class="example-chip-list">
+        <mat-chip-list #chipList aria-label="Tag selection">
+          <mat-chip
+            *ngFor="let tag of tempComment.tags"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(tag)">
+            {{tag}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            #tagInput
+            [matAutocomplete]="auto"
+            [formControl]="tagCtrl"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+            {{tag}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field> 
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="!hideCancel" (click)="cancelClickListener()">cancel</button>
+    <button (click)="saveClickListener()">save</button>
+    <button *ngIf="!hideCancel" (click)="deleteClickListener()">delete</button>  
+  </mat-card-actions>
+</mat-card>
