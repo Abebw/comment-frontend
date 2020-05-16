@@ -31,8 +31,8 @@ export class AppComponent {
   }
 
   updateCommentsFromServer(){
-    let allTagsSet = new Set<string>();
     this.commentService.getItems().subscribe((data) => {
+      let allTagsSet = new Set<string>();
       for( let record of data) {
         record[1].edit = false;
         for (let tag of record[1].tags){
@@ -40,8 +40,8 @@ export class AppComponent {
         }
       }
       this.comments = data;
+      this.allTags = [...allTagsSet];
     });
-    this.allTags = [...allTagsSet];
   }
   startEdit(comment){
     if (comment.edit == true) {
