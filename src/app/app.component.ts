@@ -18,6 +18,7 @@ export interface Comment {
 export class AppComponent {
   title = 'comment-frontend';
   comments:Map<string, Comment>;
+  allTags:string[];
   tempComment:Comment;
   
   private commentService: CommentService;
@@ -30,12 +31,17 @@ export class AppComponent {
   }
 
   updateCommentsFromServer(){
+    let allTagsSet = new Set<string>();
     this.commentService.getItems().subscribe((data) => {
       for( let record of data) {
         record[1].edit = false;
+        for (let tag of record[1].tags){
+          allTagsSet.add(tag);
+        }
       }
       this.comments = data;
     });
+    this.allTags = [...allTagsSet];
   }
   startEdit(comment){
     if (comment.edit == true) {

@@ -53,12 +53,7 @@ export class CommentService {
     return of(new Map(this.items));
   }
 
-  addNewComment(comment){
-    console.error('addNewComment unimplemented');
-  }
-
   constructor(private http: HttpClient) {
 
    }
-
 }

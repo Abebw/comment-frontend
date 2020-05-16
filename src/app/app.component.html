@@ -6,6 +6,7 @@
   <app-edit-comment
     *ngIf="comment.value.edit"
     [comment]="comment.value"
+    [allTags]="allTags"
     (cancelEdit)="cancelEdit(comment.value)"
     (saveEdit)="saveEdit($event)"
     (deleteComment)="deleteComment(comment.value)">
